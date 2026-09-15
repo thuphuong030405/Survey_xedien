@@ -1,145 +1,62 @@
-# ⚡ eCommute Vietnam PWA — Khảo Sát Xe Điện Công Sở
+readme_content = """# 🚗⚡ eCommute Vietnam — Field Survey PWA
+> **Mini-Project 2:** Khảo sát hiện trường Nhu cầu sử dụng xe điện của người đi làm  
+> **Môn học:** Cross-Platform Mobile App Development — Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn (VKU)
 
-> **Mini-Project 1** — Môn học: **Cross-Platform Mobile App Development (VKU)**
-> **Sinh viên thực hiện:** _Trần Thu Phương_ — MSSV: `_(23IT.B172)_`
-> **Vai trò:** Full-stack Developer (Đóng góp: 100%)
-> **Demo Live:** _(dán link sau khi deploy, ví dụ Cloudflare Pages / Vercel)_
-> **Repository:** _(dán link GitHub repo của bạn)_
-
----
-
-## 📌 Giới thiệu dự án
-
-**eCommute Vietnam** là ứng dụng Web lũy tiến (Progressive Web App - PWA) phục vụ việc điều tra, phỏng vấn khảo sát **nhu cầu sử dụng xe điện của người đi làm** trực tiếp tại hiện trường (công ty, khu công nghiệp, bãi đỗ xe...).
-
-Ứng dụng được thiết kế theo kiến trúc **Offline-First**, cho phép người khảo sát ghi nhận thông tin, lấy tọa độ GPS thời gian thực và chụp ảnh phương tiện/hiện trường ngay cả khi **không có kết nối mạng Internet**. Toàn bộ dữ liệu được lưu trữ an toàn dưới thiết bị (`IndexedDB`) và **tự động đồng bộ** lên Google Sheet & Google Drive ngay khi kết nối mạng được khôi phục.
+[![PWA Ready](https://img.shields.io/badge/PWA-Installable-brightgreen.svg?style=for-the-badge&logo=pwa)](https://survey-xedien.thuphuong030405.workers.dev/)
+[![Hosting](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare)](https://survey-xedien.thuphuong030405.workers.dev/)
+[![Database](https://img.shields.io/badge/Google%20Sheets-Backend-34A853?style=for-the-badge&logo=googlesheets)](https://script.google.com)
+[![Storage](https://img.shields.io/badge/Google%20Drive-Photos-4285F4?style=for-the-badge&logo=googledrive)](https://drive.google.com)
 
 ---
 
-## 🌟 Tính năng chính
+## 📌 1. THÔNG TIN CHUNG & DELIVERABLE LINKS
 
-- 📝 **Khảo sát hiện trường:** Form nhập thông tin người phỏng vấn, tự động lấy dấu thời gian (timestamp) và bộ 5 câu hỏi về nhu cầu xe điện.
-- 📍 **Định vị vị trí (Geolocation):** Tự động thu thập vĩ độ (latitude) và kinh độ (longitude) chính xác thông qua `navigator.geolocation`.
-- 📸 **Chụp & Lưu ảnh hiện trường:** Hỗ trợ kích hoạt camera thiết bị (`capture="environment"`), mã hóa ảnh sang chuẩn Base64 để lưu trữ cục bộ.
-- 💾 **Lưu trữ Offline Cục bộ:** Sử dụng **IndexedDB** (`sessions` object store) giúp lưu giữ phiên khảo sát ngay tức thì bất kể trạng thái mạng.
-- 🔄 **Đồng bộ tự động (Auto-Sync):** Tự động lắng nghe sự kiện `online/offline`. Khi có kết nối mạng, ứng dụng tự động quét và tải các phiên chờ (`synced: false`) lên backend.
-- 📊 **Cơ sở dữ liệu Google Sheet & Drive:** Sử dụng Google Apps Script Web App làm backend trung gian: mỗi phiên khảo sát ghi thành **1 dòng** trong Google Sheet, ảnh hiện trường được tải lên Google Drive.
-- 🚦 **Thanh trạng thái kết nối:** Thanh hiển thị trạng thái cố định: 🟢 **Online** (Đã kết nối) / 🟠 **Offline** (Chạy ngoại tuyến) / 🔵 **Syncing** (Đang đồng bộ), kèm thông báo khi lưu offline.
-- 📲 **Trải nghiệm PWA hoàn chỉnh:** Tích hợp `manifest.json` và Service Worker (`sw.js`) hỗ trợ cache app shell, cho phép cài đặt lên màn hình chính (Add to Home Screen) và chạy độc lập.
-
----
-
-## 📋 Bộ câu hỏi khảo sát
-
-1. Phương tiện bạn đang dùng để đi làm hiện tại? *(chọn 1)*
-2. Quãng đường một chiều từ nhà đến nơi làm việc (km)?
-3. Bạn có sẵn sàng chuyển sang xe điện trong 1–2 năm tới không? *(chọn 1)*
-4. Yếu tố bạn quan tâm nhất khi chọn xe điện?
-5. Khó khăn hoặc lo ngại lớn nhất khi sử dụng xe điện là gì?
-
-Kèm theo: tên người phỏng vấn, thời gian, tọa độ GPS, ảnh phương tiện/hiện trường.
+* **Sinh viên thực hiện:** Trần Thu Phương
+* **Mã sinh viên:** 23IT.B172
+* **Vai trò:** Full-stack Developer (Frontend PWA + Backend Apps Script + Offline Architecture)
+* **Đóng góp:** 100%
+* **Ngày hoàn thành:** 15/09/2026
+* **🔗 Live Demo App:** [https://survey-xedien.thuphuong030405.workers.dev/](https://survey-xedien.thuphuong030405.workers.dev/)
+* **💻 GitHub Repository:** [https://github.com/thuphuong030405/Survey_xedien](https://github.com/thuphuong030405/Survey_xedien)
 
 ---
 
-## 🏗️ Kiến trúc Kỹ thuật (Offline-First 3 Lớp)
+## 🌟 2. GIỚI THIỆU SẢN PHẨM
+
+**eCommute Vietnam** là ứng dụng Web Khảo sát Hiện trường dạng **Progressive Web App (PWA)** theo kiến trúc **Offline-First**. Ứng dụng được thiết kế tối ưu cho các điều kiện khảo sát thực địa (không có sóng 3G/4G/Wi-Fi hoặc kết nối chập chờn). 
+
+Toàn bộ dữ liệu nhập form, vị trí tọa độ GPS và hình ảnh chụp tại hiện trường sẽ được lưu trữ an toàn ngay trên thiết bị di động (IndexedDB) và tự động đồng bộ lên **Google Sheets & Google Drive** ngay khi thiết bị kết nối Internet trở lại.
+
+---
+
+## 🔥 3. TÍNH NĂNG NỔI BẬT
+
+- ✅ **Kiến trúc Offline-First:** Lưu trữ 100% phiên khảo sát vào `IndexedDB` mà không cần kết nối mạng. Không mất dữ liệu kể cả khi tắt trình duyệt hoặc khởi động lại máy.
+- 🔄 **Tự động đồng bộ (Auto-Sync):** Lắng nghe sự kiện `online` / `offline` của trình duyệt. Ngay khi có mạng, hệ thống tự động quét và đẩy các phiên chưa đồng bộ (`synced: false`) lên Server.
+- 📍 **Định vị GPS chính xác (Geolocation API):** Lấy chính xác Vĩ độ (Latitude) & Kinh độ (Longitude) hiện trường qua `navigator.geolocation` với thuộc tính `enableHighAccuracy`.
+- 📷 **Chụp & Xử lý ảnh hiện trường:** Tự động mở Camera sau (`capture="environment"`), chuyển đổi ảnh sang chuỗi **Base64** lưu offline và tải lên thư mục **Google Drive** khi đồng bộ.
+- 📊 **Cơ sở dữ liệu đám mây miễn phí:** Sử dụng **Google Apps Script Web App** làm Backend API, ghi nhận từng phiên khảo sát thành từng dòng dữ liệu trong **Google Sheets**.
+- 🟢 **Thanh trạng thái đa năng (Status Bar):** Cập nhật thời gian thực 3 trạng thái kết nối: `🟢 Online` / `🟠 Offline` / `🔵 Đang đồng bộ`.
+- 📱 **PWA Chuẩn mực:** Đầy đủ `manifest.json` và `sw.js` (Service Worker) hỗ trợ tính năng *"Add to Home Screen"* và mở ứng dụng độc lập như ứng dụng Native.
+
+---
+
+## 🏗️ 4. KIẾN TRÚC KỸ THUẬT & DỒNG DỮ LIỆU
+
+### Mô hình 3 Lớp (Offline-First)
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                   FRONTEND PWA                          │
-│     (HTML5 / CSS3 / Vanilla JS / Service Worker)        │
-└──────────────────────────┬──────────────────────────────┘
-                           │ (Lưu trữ trực tiếp)
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│              LOCAL STORAGE (IndexedDB)                  │
-│               [Object Store: "sessions"]                │
-└──────────────────────────┬──────────────────────────────┘
-                           │ (Tự động đồng bộ khi Online)
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│             BACKEND (Google Apps Script API)            │
-│                 [Web App: Code.gs]                      │
-└────────────┬─────────────────────────────┬──────────────┘
-             │ (Ghi bản ghi)               │ (Tải ảnh Base64)
-             ▼                             ▼
-┌─────────────────────────┐   ┌───────────────────────────┐
-│   GOOGLE SHEETS (DB)    │   │   GOOGLE DRIVE (Photos)   │
-└─────────────────────────┘   └───────────────────────────┘
-```
-
----
-
-## 📂 Cấu trúc dự án
-
-```text
-survey-pwa/
-├── index.html       # Giao diện chính form khảo sát & danh sách phiên
-├── style.css        # Giao diện ứng dụng di động (theme xanh điện - xanh lá)
-├── app.js           # Xử lý logic IndexedDB, Geolocation, Auto-Sync
-├── manifest.json    # Cấu hình Web App Manifest (PWA)
-├── sw.js            # Service Worker quản lý Cache App Shell
-├── icons/           # Bộ biểu tượng ứng dụng (logo eCommute Vietnam, 192x192, 512x512)
-└── backend/
-    └── Code.gs      # Mã nguồn Google Apps Script (Deploy dưới dạng Web App)
-```
-
----
-
-## 🚀 Hướng dẫn cài đặt & Chạy ứng dụng
-
-### 1. Phía Client (Frontend)
-Do PWA yêu cầu HTTPS hoặc `localhost` để đăng ký Service Worker và truy cập Geolocation API:
-
-1. Giải nén / clone thư mục dự án về máy.
-2. Chạy ứng dụng thông qua một Local HTTP Server (ví dụ: Live Server extension trên VS Code, hoặc `http-server`):
-   ```bash
-   npx http-server . -p 8080
-   ```
-3. Truy cập địa chỉ `http://localhost:8080` trên trình duyệt.
-4. Để test đầy đủ tính năng camera/GPS trên điện thoại, deploy lên một dịch vụ hosting hỗ trợ HTTPS miễn phí như **Cloudflare Pages**, **Vercel**, hoặc **Netlify**, rồi truy cập bằng điện thoại.
-
----
-
-### 2. Phía Backend (Google Apps Script)
-
-1. Tạo một bảng tính **Google Sheet** mới.
-2. Vào **Tiện ích mở rộng (Extensions)** > **Apps Script**.
-3. Copy mã nguồn từ file `backend/Code.gs` và dán vào cửa sổ biên dịch (xoá code mẫu có sẵn).
-4. (Tuỳ chọn) Tạo một thư mục trên Google Drive để chứa ảnh khảo sát, copy **ID thư mục** (đoạn ký tự trong URL sau `/folders/`) và dán vào biến `DRIVE_FOLDER_ID` trong `Code.gs`.
-5. Chọn **Triển khai (Deploy)** > **Triển khai dưới dạng ứng dụng web (New deployment)**:
-   - **Thực thi dưới danh nghĩa:** *Tôi (Me)*
-   - **Ai có quyền truy cập:** *Bất kỳ ai (Anyone)*
-6. Sao chép **URL ứng dụng web** thu được và cập nhật vào hằng số `APPS_SCRIPT_URL` trong file `app.js`.
-7. Mỗi lần sửa `Code.gs`, nhớ tạo **New deployment** mới (hoặc Manage deployments > Edit > New version) để URL luôn nhận code mới nhất.
-
----
-
-## 🛠️ Công nghệ sử dụng
-
-- **Frontend:** HTML5, CSS3, Modern JavaScript (ES6+).
-- **Offline & Storage API:** IndexedDB API, Cache API, Service Worker API.
-- **Hardware/Device APIs:** Geolocation API, Media API (`input capture`).
-- **Backend / Database:** Google Apps Script, Google Sheets API, Google Drive API.
-- **Deployment:** Cloudflare Pages / Vercel / Netlify (Frontend Hosting).
-
----
-
-## 🛠️ Thách thức Kỹ thuật & Giải pháp
-
-| Thách thức | Nguyên nhân | Giải pháp |
-| :--- | :--- | :--- |
-| **Lỗi Service Worker cache Extension** | Các tiện ích mở rộng (Grammarly, Chrome Extensions) gửi request nền với scheme `chrome-extension://`, bị Cache API từ chối. | Lọc kiểm tra `event.request.url.startsWith("http")` trong sự kiện `fetch` của `sw.js` trước khi thực hiện cache. |
-| **Request Google Apps Script `no-cors`** | Apps Script Web App không trả CORS headers chuẩn, buộc dùng `mode: "no-cors"` khiến trình duyệt luôn báo thành công kể cả khi sai URL. | Kiểm tra trực tiếp nhật ký tại mục **Executions** trên Apps Script Editor và sao chép chính xác URL từ cửa sổ *Manage Deployments*. |
-| **Ảnh Base64 làm nặng phiên lưu offline** | Ảnh chụp trực tiếp có thể khá lớn khi mã hoá Base64, tốn dung lượng IndexedDB trên các thiết bị cũ. | Có thể nén ảnh (resize) trước khi lưu nếu cần mở rộng; hiện tại backend tự tách ảnh ra Google Drive khi đồng bộ để giảm tải cho Sheet. |
-
----
-
-## 📝 Thông tin đồ án
-
-- **Trường:** Đại học CNTT & TT Việt - Hàn (VKU)
-- **Môn học:** Cross-Platform Mobile App Development
-- **Đề tài:** Mini-Project 1 — Khảo sát hiện trường (Point Survey) chọn chủ đề: **Nhu cầu xe điện của người đi làm**
-- **Ngày cập nhật:** 15/09/2026
-#   S u r v e y _ x e d i e n  
- #   S u r v e y _ x e d i e n  
- 
+[ FRONTEND PWA ]
+ (HTML5 / CSS3 / Vanilla JS / Service Worker)
+        │
+        │ 1. Lưu trực tiếp phiên khảo sát (kể cả ảnh Base64)
+        ▼
+[ LOCAL STORAGE ]
+ IndexedDB (database: "ev-survey-db", objectStore: "sessions")
+        │
+        │ 2. Tự động quét & gửi payload JSON khi phát hiện Online
+        ▼
+[ BACKEND APPS SCRIPT ]
+ Google Apps Script Web App (backend/Code.gs)
+        ├──► [Ghi dữ liệu phiên] ──► GOOGLE SHEETS (Database)
+        └──► [Lưu file ảnh]      ──► GOOGLE DRIVE (Folder: image_survey_xedien)
