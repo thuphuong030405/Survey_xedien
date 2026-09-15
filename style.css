@@ -1,0 +1,433 @@
+:root {
+  --bg-gradient: linear-gradient(180deg, #eef6ff 0%, #eaf7f1 55%, #e6fbef 100%);
+  --electric-blue: #2f6fed;
+  --electric-blue-dark: #2557c2;
+  --volt-green: #2fd48a;
+  --volt-green-dark: #22b876;
+  --brand-gradient: linear-gradient(120deg, #2f6fed 0%, #1fb0d6 55%, #2fd48a 100%);
+  --dark-pill: #0e1b2c;
+  --card-bg: #ffffff;
+  --card-shadow: 0 12px 32px -8px rgba(15, 40, 80, 0.09), 0 4px 12px -2px rgba(15, 40, 80, 0.05);
+  --text-main: #0e1b2c;
+  --text-muted: #5c6b7e;
+  --border-light: #e1e9f2;
+  --radius-card: 22px;
+  --radius-pill: 999px;
+  --font-display: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0e1b2c;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px 10px;
+}
+
+/* Khung mô phỏng màn hình Smartphone */
+.mobile-frame {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-gradient);
+  border-radius: 38px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 10px #0e1b2c;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Vạch sạc năng lượng chạy ngang đầu app, gợi liên tưởng thanh pin xe điện */
+.charge-strip {
+  height: 5px;
+  width: 100%;
+  background: var(--brand-gradient);
+  flex-shrink: 0;
+}
+
+/* Thanh trạng thái mạng */
+.status-bar {
+  background: var(--dark-pill);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  font-family: var(--font-body);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+}
+
+.status-online { color: #34e0a1; }
+.status-offline { color: #ffb648; }
+.status-syncing { color: #5cb4ff; }
+
+/* Header: logo + lời chào */
+.app-header {
+  padding: 20px 20px 16px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
+  flex-shrink: 0;
+}
+
+.brand-text .brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.brand-text .brand-tagline {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.chat-bubble-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 18px;
+}
+
+.avatar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.avatar-icon svg { width: 20px; height: 20px; }
+
+.chat-content p {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.main-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--text-main);
+  padding: 4px 10px 4px;
+}
+
+.main-subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 0 20px 4px;
+}
+
+/* Container chính chứa Card */
+.container {
+  padding: 4px 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Thẻ Card nội dung */
+.field-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.section-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  background: var(--brand-gradient);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 8px;
+}
+
+.section-heading h2 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 14px;
+}
+.input-group:last-child { margin-bottom: 0; }
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  background: #f6f9fd;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--electric-blue);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.18);
+}
+
+.readonly-field-card {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: #f1f5fa;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+/* Location Controls */
+.location-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.location-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-left: 4px;
+}
+
+/* Upload Photo Area */
+.photo-upload-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f6f9fd;
+  border: 2px dashed var(--border-light);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.photo-upload-card:hover {
+  background: #eef3fa;
+}
+
+.upload-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--brand-gradient);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.upload-icon svg { width: 18px; height: 18px; }
+
+.photo-upload-card span {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.photo-preview {
+  display: block;
+  margin-top: 12px;
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid var(--border-light);
+}
+
+.photo-preview[hidden] {
+  display: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.btn-electric {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  box-shadow: 0 8px 16px -6px rgba(47, 111, 237, 0.4);
+}
+.btn-electric:hover { filter: brightness(1.05); }
+.btn-electric svg { width: 16px; height: 16px; }
+
+/* Nút Submit chính */
+.btn-continue {
+  width: 100%;
+  background: var(--dark-pill);
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px -5px rgba(14, 27, 44, 0.35);
+}
+
+.btn-continue:hover {
+  transform: translateY(-2px);
+  background: #050d18;
+}
+
+.arrow-circle {
+  width: 32px;
+  height: 32px;
+  background: var(--volt-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #06261a;
+}
+.arrow-circle svg { width: 16px; height: 16px; }
+
+/* Saved Sessions List */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.section-header-row .section-heading { margin-bottom: 0; }
+
+.btn-sync {
+  background: #eef3fa;
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+.btn-sync:hover { background: #dfe8f5; }
+.btn-sync svg { width: 14px; height: 14px; }
+
+.sessions-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.session-item {
+  background: #f6f9fd;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-light);
+}
+
+.session-name { font-weight: 700; font-size: 0.85rem; color: var(--text-main); }
+.session-time { color: var(--text-muted); font-size: 0.75rem; margin-top: 2px; }
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+.badge-pending { background: #fff1de; color: #b6560a; }
+.badge-synced { background: #dcfaef; color: #128c5f; }
+
+.empty-state {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 12px 0;
+  font-style: italic;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 24px 18px 20px;
+}

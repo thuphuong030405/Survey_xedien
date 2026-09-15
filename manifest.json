@@ -1,0 +1,16 @@
+{
+  "name": "eCommute Vietnam - Khảo Sát Xe Điện Công Sở",
+  "short_name": "eCommute VN",
+  "description": "Ứng dụng điều tra hiện trường phỏng vấn nhu cầu sử dụng xe điện của người đi làm, hoạt động offline.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0e1b2c",
+  "theme_color": "#0e1b2c",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
